@@ -30,7 +30,8 @@ namespace ExchengeREST.REST.Classes
         public async Task<string> CreateOrder(string symbol,string side,string type,string timeInForce,double quantity,double price)
         {
             string jsonData = @"{""symbol"":"""+ symbol + @""",""side"":"""+ side + @""",""type"":"""+ type + @""",""timeInForce"","""+ timeInForce + @""",""quantity"","""+ quantity.ToString() + @""",""price"","""+ price.ToString() + @"""}";
-            return await ReqwestPOSTAsync(baseUrl + "/order",jsonData);
+            await ReqwestPOSTAsync(baseUrl + "/order", jsonData);
+            return await ReqwestGetAsync(baseUrl + "/balance");
         }
     }
 }

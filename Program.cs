@@ -13,8 +13,10 @@ namespace ExchengeREST
         {
             
             AltillyCom a = new AltillyCom("79e56b7617819ac99a2704a03d4d8a", "392b2d925326437e52cf32a89ce3fdd97f2e79ee");
+            //створюєм запит
             Task<string> t = a.CreateOrder("ETHBTC", "sell", "limit", "GTC", 0.001, 1);
             Console.WriteLine("djcnjsndjc");
+            //отримуєм результат
             Console.WriteLine(t.Result);
             Console.WriteLine("djcnjsndjc");
             Console.ReadLine();
