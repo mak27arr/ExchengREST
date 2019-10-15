@@ -19,7 +19,7 @@ namespace ExchengeREST.REST.Classes
         tpMarket
     }
 
-    public class AltillyCom : WebConector, IExchenge
+    public class AltillyCom : WebConector
     {
         public AltillyCom(string username,string password)
         {
@@ -27,10 +27,10 @@ namespace ExchengeREST.REST.Classes
             this.username = username;
             this.password = password;
         }
-        public string CreateOrder()
+        public async Task<string> CreateOrder(string symbol,string side,string type,string timeInForce,double quantity,double price)
         {
-            string jsonData = @"{""symbol"":""a"",""side"":""sell"",""type"":""limit"",""timeInForce"",""GTC"",""quantity"",""0.001"",""price"",""1""}";
-            return ReqwestPOST(baseUrl + "/order",jsonData);
+            string jsonData = @"{""symbol"":"""+ symbol + @""",""side"":"""+ side + @""",""type"":"""+ type + @""",""timeInForce"","""+ timeInForce + @""",""quantity"","""+ quantity.ToString() + @""",""price"","""+ price.ToString() + @"""}";
+            return await ReqwestPOSTAsync(baseUrl + "/order",jsonData);
         }
     }
 }
