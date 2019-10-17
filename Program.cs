@@ -16,7 +16,8 @@ namespace ExchengeREST
             //створюєм запит
             Task<string> t = a.CreateOrder("ETHBTC", "sell", "limit", "GTC", 0.001, 1);
             //отримуєм результат
-            Console.WriteLine(t.Result.ToLower());
+            Console.WriteLine(t.Result);
+            Console.WriteLine("adasdasdas");
 
             //FcoinCom f = new FcoinCom("6df9026188f64e879aa9039c2d013217", "d33d7a6aea05499a89ee8fc2eccfca4f");
             //Console.WriteLine(f.CreateOrder("","","","",0,0));
