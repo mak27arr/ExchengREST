@@ -32,10 +32,8 @@ namespace ExchengeREST.REST.Abstract
         {
             httpClient.Timeout = TimeSpan.FromMinutes(30);
             return await Task.Run(() => {
-                //StringContent content = new StringContent(data);
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
                 requestMessage.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", username, password))));
-                //requestMessage.Content = content;
                 HttpResponseMessage response = httpClient.SendAsync(requestMessage).Result;
                 return response.Content.ReadAsStringAsync();
             });
