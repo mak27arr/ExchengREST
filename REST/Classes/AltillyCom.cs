@@ -31,7 +31,7 @@ namespace ExchengeREST.REST.Classes
         {
             string jsonData = @"{""symbol"":"""+ symbol + @""",""side"":"""+ side + @""",""type"":"""+ type + @""",""timeInForce"","""+ timeInForce + @""",""quantity"","""+ quantity.ToString() + @""",""price"","""+ price.ToString() + @"""}";
             await ReqwestPOSTAsync(baseUrl + "/order", jsonData);
-            return await ReqwestGetAsync(baseUrl + "/balance");
+            return await ReqwestGetAsync(baseUrl + "/trading/balance");
         }
     }
 }
