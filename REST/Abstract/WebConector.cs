@@ -18,7 +18,7 @@ namespace ExchengeREST.REST.Abstract
         private HttpClient httpClient = new HttpClient();
         protected async Task<string> ReqwestPOSTAsync(string url,string data)
         {
-            httpClient.Timeout = TimeSpan.FromMinutes(10);
+            httpClient = new HttpClient();
             return await Task.Run(() => {
                 StringContent content = new StringContent(data);
                 var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
@@ -30,7 +30,7 @@ namespace ExchengeREST.REST.Abstract
         }
         protected async Task<string> ReqwestGetAsync(string url)
         {
-            httpClient.Timeout = TimeSpan.FromMinutes(30);
+            httpClient = new HttpClient();
             return await Task.Run(() => {
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
                 requestMessage.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", username, password))));
