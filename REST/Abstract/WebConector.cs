@@ -18,6 +18,7 @@ namespace ExchengeREST.REST.Abstract
         private HttpClient httpClient = new HttpClient();
         protected async Task<string> ReqwestPOSTAsync(string url,string data)
         {
+            httpClient.Timeout = TimeSpan.FromMinutes(10);
             return await Task.Run(() => {
                 StringContent content = new StringContent(data);
                 var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
@@ -29,6 +30,7 @@ namespace ExchengeREST.REST.Abstract
         }
         protected async Task<string> ReqwestGetAsync(string url)
         {
+            httpClient.Timeout = TimeSpan.FromMinutes(30);
             return await Task.Run(() => {
                 //StringContent content = new StringContent(data);
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
